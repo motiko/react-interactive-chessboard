@@ -1,6 +1,6 @@
 {
-  "name": "react-interactive-chessboard",
-  "version": "1.0.0",
+  "name": "@motiko/react-interactive-chessboard",
+  "version": "0.0.1",
   "description": "Interactive chessboard for collaboration",
   "author": "motiko",
   "license": "MIT",
