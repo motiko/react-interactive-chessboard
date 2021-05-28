@@ -1,10 +1,14 @@
 import React from 'react'
 
-import { ExampleComponent } from 'react-interactive-chessboard'
+import { ChessBoard } from 'react-interactive-chessboard'
 import 'react-interactive-chessboard/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return (
+    <div style={{ width: '500px', height: '500px' }}>
+      <ChessBoard />
+    </div>
+  )
 }
 
 export default App

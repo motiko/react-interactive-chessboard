@@ -1,10 +1,12 @@
 import * as React from 'react'
 import styles from './styles.module.css'
 
-interface Props {
-  text: string
-}
+// interface Props {}
 
-export const ExampleComponent = ({ text }: Props) => {
-  return <div className={styles.test}>Example Component: {text}</div>
+export const ChessBoard = () => {
+  return (
+    <div className={styles.wrap}>
+      <div className={styles.board} />
+    </div>
+  )
 }
