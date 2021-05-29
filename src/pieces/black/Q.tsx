@@ -2,7 +2,7 @@ import React from 'react'
 
 function SvgQ(props: any) {
   return (
-    <svg {...props}>
+    <svg {...props} viewBox='0 0 40 40'>
       <g
         stroke='#000'
         strokeWidth={1.5}

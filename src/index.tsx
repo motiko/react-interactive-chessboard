@@ -15,7 +15,7 @@ import WhiteK from './pieces/white/K'
 import WhiteQ from './pieces/white/Q'
 
 interface Props {
-  fen: string
+  initialFen: string
 }
 
 const charToSvg = {
@@ -51,21 +51,35 @@ function fen2array(fen: string): Array<string> {
 }
 
 function Piece({ pieceChar }: { pieceChar: string }) {
+  function allowDrop(e) {
+    // console.log(e)
+  }
+  function onDrop(e) {
+    // ev.target.appendChild(document.getElementById(data));
+    // console.log(e)
+  }
+  function dragStart(e) {
+    // console.log(e)
+  }
   const PieceSvg = charToSvg[pieceChar]
   if (!PieceSvg) return <span className={styles.cell} />
   return (
-    <div className={styles.cell}>
+    <div className={styles.cell} onDrop={onDrop} onDragOver={allowDrop}>
       {' '}
-      <div draggable style={{ width: '60%', height: '60%' }}>
+      <div
+        draggable
+        style={{ width: '50%', height: '50%' }}
+        onDragStart={dragStart}
+      >
         <PieceSvg style={{ width: '100%', height: '100%' }} />
       </div>
     </div>
   )
 }
 
-export const ChessBoard = ({ fen }: Props) => {
-  console.log(fen)
-  const fenPieces = fen.split(' ')[0]
+export const ChessBoard = ({ initialFen }: Props) => {
+  console.log(initialFen)
+  const fenPieces = initialFen.split(' ')[0]
   const boardArr = fen2array(fenPieces)
   console.log(boardArr)
   return (

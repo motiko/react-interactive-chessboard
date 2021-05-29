@@ -2,7 +2,7 @@ import React from 'react'
 
 function SvgR(props: any) {
   return (
-    <svg {...props}>
+    <svg {...props} viewBox='0 0 40 40'>
       <g
         fillRule='evenodd'
         stroke='#000'
