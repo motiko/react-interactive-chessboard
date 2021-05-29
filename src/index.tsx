@@ -1,36 +1,8 @@
-import * as React from 'react'
+import React from 'react'
 import styles from './styles.module.css'
-import BlackQ from './pieces/black/Q'
-import BlackK from './pieces/black/K'
-import BlackN from './pieces/black/N'
-import BlackP from './pieces/black/P'
-import BlackR from './pieces/black/R'
-import BlackB from './pieces/black/B'
-
-import WhiteB from './pieces/white/B'
-import WhiteR from './pieces/white/R'
-import WhiteP from './pieces/white/P'
-import WhiteN from './pieces/white/N'
-import WhiteK from './pieces/white/K'
-import WhiteQ from './pieces/white/Q'
-
+import Piece from './Piece'
 interface Props {
   initialFen: string
-}
-
-const charToSvg = {
-  q: BlackQ,
-  k: BlackK,
-  n: BlackN,
-  p: BlackP,
-  r: BlackR,
-  b: BlackB,
-  Q: WhiteQ,
-  K: WhiteK,
-  N: WhiteN,
-  P: WhiteP,
-  R: WhiteR,
-  B: WhiteB
 }
 
 function fen2array(fen: string): Array<string> {
@@ -48,33 +20,6 @@ function fen2array(fen: string): Array<string> {
     })
   })
   return result
-}
-
-function Piece({ pieceChar }: { pieceChar: string }) {
-  function allowDrop(e) {
-    // console.log(e)
-  }
-  function onDrop(e) {
-    // ev.target.appendChild(document.getElementById(data));
-    // console.log(e)
-  }
-  function dragStart(e) {
-    // console.log(e)
-  }
-  const PieceSvg = charToSvg[pieceChar]
-  if (!PieceSvg) return <span className={styles.cell} />
-  return (
-    <div className={styles.cell} onDrop={onDrop} onDragOver={allowDrop}>
-      {' '}
-      <div
-        draggable
-        style={{ width: '50%', height: '50%' }}
-        onDragStart={dragStart}
-      >
-        <PieceSvg style={{ width: '100%', height: '100%' }} />
-      </div>
-    </div>
-  )
 }
 
 export const ChessBoard = ({ initialFen }: Props) => {
