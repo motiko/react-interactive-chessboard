@@ -2017,6 +2017,18 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
+"@use-gesture/core@^10.0.0-beta.9":
+  version "10.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@use-gesture/core/-/core-10.0.0-beta.9.tgz#74dee68d00ac743214aa9803465e58bede5a2a5c"
+  integrity sha512-f/pMyGjHJhcTeRfQyfNsqlO8Kjy0LAzk105kYjguoDYUa75Aa3Cz5VuL2RltD1s8EaPnhqb/FoNoVOAS8ugN5Q==
+
+"@use-gesture/react@^10.0.0-beta.9":
+  version "10.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@use-gesture/react/-/react-10.0.0-beta.9.tgz#e2a550f4436a8deaf41a353fbbacd64746bccb22"
+  integrity sha512-vkhy2bmXo0sF3xaWCjVhIbDNt7Ck7FfDtMvsJRiS56CX5ElKWnTp3X4mqhURjAiiK0ws9Cq5iZw21px4E5DYLA==
+  dependencies:
+    "@use-gesture/core" "^10.0.0-beta.9"
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
