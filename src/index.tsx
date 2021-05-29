@@ -1,7 +1,6 @@
 import React, { useRef, RefObject } from 'react'
 import styles from './styles.module.css'
 import Piece from './Piece'
-import { useDrag } from '@use-gesture/react'
 interface Props {
   initialFen: string
 }
@@ -23,61 +22,75 @@ function fen2array(fen: string): Array<string> {
   return result
 }
 
-// function getMousePosition(evt) {
-//   var CTM = svg.getScreenCTM()
-//   return {
-//     x: (evt.clientX - CTM.e) / CTM.a,
-//     y: (evt.clientY - CTM.f) / CTM.d
-//   }
-// }
-
 export const ChessBoard = ({ initialFen }: Props) => {
   console.log(initialFen)
   const fenPieces = initialFen.split(' ')[0]
   const boardArr = fen2array(fenPieces)
   console.log(boardArr)
   const svgRef = useRef<any>()
-  const bind = useDrag(({ down, movement: [mx, my] }) => {
-    if (down && svgRef?.current) {
-      console.log({ x: down ? mx : 0, y: down ? my : 0 })
+  const boardRef = useRef<any>()
+  const isDragged = useRef<any>()
+  const dragOffset = useRef<any>()
+  const draggedFrom = useRef<any>()
 
-      const svgNode: any = svgRef.current
-      if (down) {
-        var CTM = svgNode.getScreenCTM()
-        const { x, y } = {
-          x: (mx - CTM.e) / CTM.a,
-          y: (my - CTM.f) / CTM.d
-        }
-        svgNode.setAttributeNS(
-          null,
-          'transform',
-          `scale(0.02) translate(${x} ${y}) `
-        )
-        // svgNode.setAttribute('x', `2`)
-        // svgNode.setAttribute('y', `2`)
+  function getMousePosition(evt) {
+    if (boardRef.current) {
+      var CTM = boardRef.current.getScreenCTM()
+      return {
+        x: (evt.clientX - CTM.e) / CTM.a,
+        y: (evt.clientY - CTM.f) / CTM.d
       }
     }
-  })
-  return (
-    <svg viewBox='0 0 8 8' shapeRendering='crispEdges'>
-      <g id='board_svg__f'>
-        <g id='board_svg__e'>
-          <g id='board_svg__d'>
-            <g id='board_svg__c'>
-              <path fill='#f0d9b5' id='board_svg__a' d='M0 0h1v1H0z' />
-              <use x={1} y={1} href='#board_svg__a' xlinkHref='#a' />
-              <path fill='#b58863' id='board_svg__b' d='M0 1h1v1H0z' />
-              <use x={1} y={-1} href='#board_svg__b' xlinkHref='#b' />
-            </g>
-            <use x={2} href='#board_svg__c' xlinkHref='#c' />
-          </g>
-          <use x={4} href='#board_svg__d' xlinkHref='#d' />
-        </g>
-        <use y={2} href='#board_svg__e' xlinkHref='#e' />
-      </g>
-      <use y={4} href='#board_svg__f' xlinkHref='#f' />
+    return { x: 0, y: 0 }
+  }
+  const startDrag = (evt) => {
+    isDragged.current = true
+    const { x, y } = getMousePosition(evt)
+    // console.log(x, y)
+    draggedFrom.current = { x, y }
+    dragOffset.current = { x, y }
+    const svgNode: any = svgRef.current
+    dragOffset.current.x -= parseFloat(svgNode.getAttributeNS(null, 'x'))
+    dragOffset.current.y -= parseFloat(svgNode.getAttributeNS(null, 'y'))
+  }
 
-      <svg shapeRendering='crispEdges' x='0' y='0'>
+  const endDrag = (evt) => {
+    isDragged.current = false
+  }
+
+  const drag = (evt) => {
+    if (svgRef?.current && isDragged.current) {
+      const svgNode: any = svgRef.current
+      if (svgNode) {
+        evt.preventDefault()
+        const { x, y } = getMousePosition(evt)
+        svgNode.setAttributeNS(null, 'x', x - dragOffset.current.x)
+        svgNode.setAttributeNS(null, 'y', y - dragOffset.current.y)
+      }
+    }
+  }
+
+  return (
+    <svg
+      viewBox='0 0 8 8'
+      shapeRendering='crispEdges'
+      onMouseMove={drag}
+      onMouseUp={endDrag}
+      ref={boardRef}
+    >
+      {[...Array(8).keys()].map((x) =>
+        [...Array(8).keys()].map((y) => (
+          <rect
+            x={x}
+            y={y}
+            width='1'
+            height='1'
+            fill={(x + y) % 2 === 0 ? '#f0d9b5' : '#b58863'}
+            key={`${x}${y}`}
+          />
+        ))
+      )}
+      <svg x={1} y={2} ref={svgRef} onMouseDown={startDrag}>
         <g
           fill='none'
           fillRule='evenodd'
@@ -87,7 +100,6 @@ export const ChessBoard = ({ initialFen }: Props) => {
           strokeLinejoin='round'
           transform='scale(0.02)'
           ref={svgRef}
-          {...bind()}
         >
           <g fill='#000' strokeLinecap='butt'>
             <path d='M9 36c3.39-.97 10.11.43 13.5-2 3.39 2.43 10.11 1.03 13.5 2 0 0 1.65.54 3 2-.68.97-1.65.99-3 .5-3.39-.97-10.11.46-13.5-1-3.39 1.46-10.11.03-13.5 1-1.35.49-2.32.47-3-.5 1.35-1.46 3-2 3-2z' />
