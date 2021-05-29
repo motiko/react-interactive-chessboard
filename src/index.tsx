@@ -50,18 +50,29 @@ function fen2array(fen: string): Array<string> {
   return result
 }
 
+function Piece({ pieceChar }: { pieceChar: string }) {
+  const PieceSvg = charToSvg[pieceChar]
+  if (!PieceSvg) return <span className={styles.cell} />
+  return (
+    <div className={styles.cell}>
+      {' '}
+      <div draggable style={{ width: '60%', height: '60%' }}>
+        <PieceSvg style={{ width: '100%', height: '100%' }} />
+      </div>
+    </div>
+  )
+}
+
 export const ChessBoard = ({ fen }: Props) => {
   console.log(fen)
   const fenPieces = fen.split(' ')[0]
-  const piecesArr = fen2array(fenPieces)
-  console.log(piecesArr)
+  const boardArr = fen2array(fenPieces)
+  console.log(boardArr)
   return (
     <div className={styles.wrap}>
       <div className={styles.board}>
-        {piecesArr.map((piece, i) => (
-          <span className={styles.cell} key={i}>
-            {charToSvg[piece]?.()}
-          </span>
+        {boardArr.map((pieceChar, i) => (
+          <Piece pieceChar={pieceChar} key={i} />
         ))}
       </div>
     </div>

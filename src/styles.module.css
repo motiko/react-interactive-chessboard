@@ -12,6 +12,12 @@
   grid-template-columns: repeat(8, 12.5%);
 }
 
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .cell:nth-child(even) {
 }
 
