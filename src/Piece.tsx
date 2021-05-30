@@ -54,6 +54,7 @@ export default function Piece({
       onTouchStart={onTouchStart}
       className={styles.piece}
       viewBox='-2 -2 400 400'
+      shapeRendering='crispEdges'
     />
   )
 }
