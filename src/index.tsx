@@ -1,5 +1,4 @@
-import React, { useRef, RefObject } from 'react'
-import styles from './styles.module.css'
+import React, { useRef } from 'react'
 import Piece from './Piece'
 import useDraggable from './useDraggable'
 
@@ -25,11 +24,9 @@ function fen2array(fen: string): Array<string> {
 }
 
 export const ChessBoard = ({ initialFen }: Props) => {
-  console.log(initialFen)
   const fenPieces = initialFen.split(' ')[0]
   const boardArr = fen2array(fenPieces)
   const boardRef = useRef<any>()
-  console.log(boardArr)
   const { startDrag, endDrag, drag } = useDraggable(boardRef)
 
   return (

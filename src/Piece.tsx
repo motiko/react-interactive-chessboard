@@ -12,6 +12,7 @@ import WhiteP from './pieces/white/P'
 import WhiteN from './pieces/white/N'
 import WhiteK from './pieces/white/K'
 import WhiteQ from './pieces/white/Q'
+import styles from './styles.module.css'
 
 const charToSvg = {
   q: BlackQ,
@@ -51,6 +52,7 @@ export default function Piece({
       y={y}
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
+      className={styles.piece}
     />
   )
 }
