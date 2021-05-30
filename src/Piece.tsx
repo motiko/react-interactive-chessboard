@@ -12,7 +12,6 @@ import WhiteP from './pieces/white/P'
 import WhiteN from './pieces/white/N'
 import WhiteK from './pieces/white/K'
 import WhiteQ from './pieces/white/Q'
-import styles from './styles.module.css'
 
 const charToSvg = {
   q: BlackQ,
@@ -29,15 +28,15 @@ const charToSvg = {
   B: WhiteB
 }
 
-export default function Piece({ pieceChar }: { pieceChar: string }) {
+interface Props {
+  pieceChar: string
+  x: number
+  y: number
+  onMouseDown: (Event) => void
+}
+
+export default function Piece({ pieceChar, x, y, onMouseDown }: Props) {
   const PieceSvg = charToSvg[pieceChar]
   if (!PieceSvg) return null
-  return (
-    <div className={styles.cell}>
-      {' '}
-      <div style={{ width: '50%', height: '50%' }}>
-        <WhiteP style={{ width: '100%', height: '100%' }} />
-      </div>
-    </div>
-  )
+  return <PieceSvg x={x} y={y} onMouseDown={onMouseDown} />
 }

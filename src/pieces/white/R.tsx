@@ -2,7 +2,7 @@ import React from 'react'
 
 function SvgR(props: any) {
   return (
-    <svg {...props} viewBox='0 0 40 40'>
+    <svg {...props}>
       <g
         fill='#fff'
         fillRule='evenodd'
@@ -10,6 +10,7 @@ function SvgR(props: any) {
         strokeWidth={1.5}
         strokeLinecap='round'
         strokeLinejoin='round'
+        transform='scale(0.02)'
       >
         <path
           d='M9 39h27v-3H9v3zM12 36v-4h21v4H12zM11 14V9h4v2h5V9h5v2h5V9h4v5'

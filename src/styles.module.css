@@ -24,3 +24,7 @@
 
 .cell:nth-child(odd) {
 }
+
+.piece {
+  cursor: grab;
+}
