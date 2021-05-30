@@ -4,6 +4,7 @@ import useDraggable from './useDraggable'
 
 interface Props {
   initialFen: string
+  onMove: (from: string, to: string) => void
 }
 
 function fen2array(fen: string): Array<string> {
@@ -23,7 +24,7 @@ function fen2array(fen: string): Array<string> {
   return result
 }
 
-export const ChessBoard = ({ initialFen }: Props) => {
+export const ChessBoard = ({ initialFen, onMove }: Props) => {
   const fenPieces = initialFen.split(' ')[0]
   const boardArr = fen2array(fenPieces)
   const boardRef = useRef<any>()

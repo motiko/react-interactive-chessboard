@@ -6,7 +6,21 @@ function findFirstSvgParent(node: any): any {
   return findFirstSvgParent(node.parentNode)
 }
 
-export default function useDraggable(boardRef) {
+interface Coords {
+  x: number
+  y: number
+}
+
+function coordsToUci({ x, y }) {
+  x = Math.floor(x)
+  y = Math.floor(y)
+  const codeOfA = 'a'.charCodeAt(0)
+  const resCode = codeOfA + x
+  const result = `${String.fromCharCode(resCode)}${8 - y}`
+  return result
+}
+
+export default function useDraggable(boardRef, onMove) {
   const draggedSvg = useRef<any>()
   const dragOffset = useRef<any>()
   const draggedFrom = useRef<any>()
@@ -28,6 +42,9 @@ export default function useDraggable(boardRef) {
       const y = svgNode.getAttributeNS(null, 'y')
       svgNode.setAttributeNS(null, 'x', Math.round(x))
       svgNode.setAttributeNS(null, 'y', Math.round(y))
+      const from = coordsToUci(draggedFrom.current)
+      const to = coordsToUci({ x: Math.round(x), y: Math.round(y) })
+      onMove(from, to)
     }
     draggedSvg.current = null
   }
@@ -46,7 +63,7 @@ export default function useDraggable(boardRef) {
 
   function getMousePosition(evt) {
     if (boardRef.current) {
-      var CTM = boardRef.current.getScreenCTM()
+      const CTM = boardRef.current.getScreenCTM()
       const event = evt.touches ? (evt = evt.touches[0]) : evt
       return {
         x: (event.clientX - CTM.e) / CTM.a,
