@@ -53,6 +53,7 @@ export default function Piece({
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
       className={styles.piece}
+      viewBox='-2 -2 400 400'
     />
   )
 }

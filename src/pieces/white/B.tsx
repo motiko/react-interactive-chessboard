@@ -1,5 +1,4 @@
 import React from 'react'
-import { transform } from '../../Piece'
 
 function SvgB(props: any) {
   return (
@@ -11,7 +10,6 @@ function SvgB(props: any) {
         strokeWidth={1.5}
         strokeLinecap='round'
         strokeLinejoin='round'
-        transform={transform}
       >
         <g fill='#fff' strokeLinecap='butt'>
           <path d='M9 36c3.39-.97 10.11.43 13.5-2 3.39 2.43 10.11 1.03 13.5 2 0 0 1.65.54 3 2-.68.97-1.65.99-3 .5-3.39-.97-10.11.46-13.5-1-3.39 1.46-10.11.03-13.5 1-1.35.49-2.32.47-3-.5 1.35-1.46 3-2 3-2z' />

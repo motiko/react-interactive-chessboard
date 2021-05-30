@@ -1,5 +1,4 @@
 import React from 'react'
-import { transform } from '../../Piece'
 
 function SvgP(props: any) {
   return (
@@ -9,7 +8,6 @@ function SvgP(props: any) {
         stroke='#000'
         strokeWidth={1.5}
         strokeLinecap='round'
-        transform={transform}
       />
     </svg>
   )
