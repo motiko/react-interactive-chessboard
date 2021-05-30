@@ -37,7 +37,9 @@ export const ChessBoard = ({ initialFen }: Props) => {
       viewBox='0 0 8 8'
       shapeRendering='crispEdges'
       onMouseMove={drag}
+      onTouchMove={drag}
       onMouseUp={endDrag}
+      onTouchEnd={endDrag}
       ref={boardRef}
     >
       {[...Array(8).keys()].map((x) =>
@@ -61,6 +63,7 @@ export const ChessBoard = ({ initialFen }: Props) => {
               y={Math.floor(i / 8)}
               key={i}
               onMouseDown={startDrag}
+              onTouchStart={startDrag}
             />
           )
       )}

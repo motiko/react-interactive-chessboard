@@ -47,9 +47,10 @@ export default function useDraggable(boardRef) {
   function getMousePosition(evt) {
     if (boardRef.current) {
       var CTM = boardRef.current.getScreenCTM()
+      const event = evt.touches ? (evt = evt.touches[0]) : evt
       return {
-        x: (evt.clientX - CTM.e) / CTM.a,
-        y: (evt.clientY - CTM.f) / CTM.d
+        x: (event.clientX - CTM.e) / CTM.a,
+        y: (event.clientY - CTM.f) / CTM.d
       }
     }
     return { x: 0, y: 0 }

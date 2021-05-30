@@ -33,10 +33,24 @@ interface Props {
   x: number
   y: number
   onMouseDown: (Event) => void
+  onTouchStart: (Event) => void
 }
 
-export default function Piece({ pieceChar, x, y, onMouseDown }: Props) {
+export default function Piece({
+  pieceChar,
+  x,
+  y,
+  onMouseDown,
+  onTouchStart
+}: Props) {
   const PieceSvg = charToSvg[pieceChar]
   if (!PieceSvg) return null
-  return <PieceSvg x={x} y={y} onMouseDown={onMouseDown} />
+  return (
+    <PieceSvg
+      x={x}
+      y={y}
+      onMouseDown={onMouseDown}
+      onTouchStart={onTouchStart}
+    />
+  )
 }
