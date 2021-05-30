@@ -1,14 +1,15 @@
 import React from 'react'
+import { transform } from '../../Piece'
 
 function SvgQ(props: any) {
   return (
-    <svg {...props} >
+    <svg {...props}>
       <g
         stroke='#000'
         strokeWidth={1.5}
         strokeLinecap='round'
         strokeLinejoin='round'
-        transform='scale(0.02)'
+        transform={transform}
       >
         <path
           d='M9 26c8.5-1.5 21-1.5 27 0l2.5-12.5L31 25l-.3-14.1-5.2 13.6-3-14.5-3 14.5-5.2-13.6L14 25 6.5 13.5 9 26z'

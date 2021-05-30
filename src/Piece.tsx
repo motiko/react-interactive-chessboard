@@ -56,3 +56,6 @@ export default function Piece({
     />
   )
 }
+
+const transform = 'scale(0.015) translate(10 10)'
+export { transform }

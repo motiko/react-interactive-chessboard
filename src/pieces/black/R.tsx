@@ -1,4 +1,5 @@
 import React from 'react'
+import { transform } from '../../Piece'
 
 function SvgR(props: any) {
   return (
@@ -9,7 +10,7 @@ function SvgR(props: any) {
         strokeWidth={1.5}
         strokeLinecap='round'
         strokeLinejoin='round'
-        transform='scale(0.02)'
+        transform={transform}
       >
         <path
           d='M9 39h27v-3H9v3zM12.5 32l1.5-2.5h17l1.5 2.5h-20zM12 36v-4h21v4H12z'

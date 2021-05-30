@@ -1,4 +1,5 @@
 import React from 'react'
+import { transform } from '../../Piece'
 
 function SvgN(props: any) {
   return (
@@ -10,7 +11,7 @@ function SvgN(props: any) {
         strokeWidth={1.5}
         strokeLinecap='round'
         strokeLinejoin='round'
-        transform='scale(0.02)'
+        transform={transform}
       >
         <path d='M22 10c10.5 1 16.5 8 16 29H15c0-9 10-6.5 8-21' fill='#fff' />
         <path

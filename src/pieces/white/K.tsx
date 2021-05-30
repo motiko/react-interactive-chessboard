@@ -1,8 +1,9 @@
 import React from 'react'
+import { transform } from '../../Piece'
 
 function SvgK(props: any) {
   return (
-    <svg {...props} >
+    <svg {...props}>
       <g
         fill='none'
         fillRule='evenodd'
@@ -10,7 +11,7 @@ function SvgK(props: any) {
         strokeWidth={1.5}
         strokeLinecap='round'
         strokeLinejoin='round'
-        transform='scale(0.02)'
+        transform={transform}
       >
         <path d='M22.5 11.63V6M20 8h5' strokeLinejoin='miter' />
         <path
