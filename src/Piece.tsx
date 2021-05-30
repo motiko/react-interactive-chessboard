@@ -30,23 +30,13 @@ const charToSvg = {
 }
 
 export default function Piece({ pieceChar }: { pieceChar: string }) {
-  function allowDrop(e) {
-    // console.log(e)
-  }
-  function onDrop(e) {
-    // ev.target.appendChild(document.getElementById(data));
-    // console.log(e)
-  }
-  function dragStart(e) {
-    // console.log(e)
-  }
   const PieceSvg = charToSvg[pieceChar]
-  if (!PieceSvg) return <span className={styles.cell} />
+  if (!PieceSvg) return null
   return (
     <div className={styles.cell}>
       {' '}
       <div style={{ width: '50%', height: '50%' }}>
-        <PieceSvg style={{ width: '100%', height: '100%' }} />
+        <WhiteP style={{ width: '100%', height: '100%' }} />
       </div>
     </div>
   )
