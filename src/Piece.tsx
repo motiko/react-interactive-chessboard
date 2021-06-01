@@ -33,8 +33,8 @@ interface Props {
   pieceChar: string
   x: number
   y: number
-  onMouseDown: (Event) => void
-  onTouchStart: (Event) => void
+  onMouseDown: (evt: Event) => void
+  onTouchStart: (evt: Event) => void
 }
 
 export default function Piece({

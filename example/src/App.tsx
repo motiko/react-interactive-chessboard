@@ -8,6 +8,7 @@ const App = () => {
     <div style={{ width: '100vh', height: '100vh' }}>
       <ChessBoard
         initialFen={'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'}
+        onMove={(x, y) => console.log('Move: ', x, y)}
       />
     </div>
   )
