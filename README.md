@@ -2,7 +2,7 @@
 
 > Interactive chessboard for collaboration
 
-[![NPM](https://img.shields.io/npm/v/react-interactive-chessboard.svg)](https://www.npmjs.com/package/react-interactive-chessboard) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@motiko/react-interactive-chessboard.svg)](https://www.npmjs.com/package/@motiko/react-interactive-chessboard) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
