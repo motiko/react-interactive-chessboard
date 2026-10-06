@@ -4,7 +4,10 @@
   "description": "Interactive chessboard for collaboration",
   "author": "motiko",
   "license": "MIT",
-  "repository": "motiko/react-interactive-chessboard",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/motiko/react-interactive-chessboard.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
