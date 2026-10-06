@@ -2,7 +2,7 @@ import React from 'react'
 
 function SvgK(props: any) {
   return (
-    <svg {...props} viewBox='0 0 40 40'>
+    <svg {...props} >
       <g
         fill='none'
         fillRule='evenodd'
@@ -10,6 +10,7 @@ function SvgK(props: any) {
         strokeWidth={1.5}
         strokeLinecap='round'
         strokeLinejoin='round'
+        transform='scale(0.02)'
       >
         <path d='M22.5 11.63V6M20 8h5' strokeLinejoin='miter' />
         <path
